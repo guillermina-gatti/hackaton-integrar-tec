@@ -1499,3 +1499,36 @@ body {
   height: 50vh;
 }
 
+
+
+/* ---------- Ajustes v16: lista de reclamos fija y completa, sin desfile ---------- */
+
+.lista-reclamos {
+  flex: 1;
+  min-height: 0;
+  overflow-y: auto;
+  padding-right: 0.25rem;
+}
+
+.lista-fija {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+
+.lista-fija .fila {
+  flex-shrink: 0;
+  height: auto;
+  min-height: 80px;
+}
+
+.lista-fija .fila-texto,
+.lista-fija .fila-desc {
+  white-space: normal;
+  overflow: visible;
+  text-overflow: clip;
+  line-height: 1.45;
+}

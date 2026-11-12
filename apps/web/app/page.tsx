@@ -64,8 +64,6 @@ export default function Home() {
 
   const elegido = TIPOS.find((t) => t.valor === tipo) ?? TIPOS[0];
 
-  // Con 2 columnas, el desfile necesita un número par de filas para repetirse sin saltos
-  const base: (Reclamo | null)[] = tablero.length % 2 ? [...tablero, null] : tablero;
 
   const cargarTablero = useCallback(async () => {
     try {
@@ -333,22 +331,11 @@ export default function Home() {
             {tablero.length === 0 ? (
               <p className="vacio">Todavía no hay reclamos. Sé el primero.</p>
             ) : (
-              <div className="ticker">
-                <ul
-                  className="ticker-track"
-                  style={
-                    {
-                      '--duracion': `${Math.max(14, Math.ceil(tablero.length / 2) * 3)}s`,
-                    } as CSSProperties
-                  }
-                >
-                  {[...base, ...base].map((r, i) =>
-                    r ? (
-                      <FilaReclamo key={`${i}-${r.expediente}`} r={r} />
-                    ) : (
-                      <li key={`${i}-vacia`} className="fila fila-vacia" aria-hidden />
-                    ),
-                  )}
+              <div className="lista-reclamos">
+                <ul className="lista-fija">
+                  {tablero.map((r) => (
+                    <FilaReclamo key={r.expediente} r={r} />
+                  ))}
                 </ul>
               </div>
             )}
