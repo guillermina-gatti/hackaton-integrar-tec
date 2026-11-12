@@ -1,0 +1,13 @@
+{
+  "name": "hackaton-integrar-tec",
+  "private": true,
+  "scripts": {
+    "dev": "concurrently -n api,web -c magenta,cyan \"pnpm dev:api\" \"pnpm dev:web\"",
+    "dev:api": "pnpm --filter api start:dev",
+    "dev:web": "pnpm --filter web dev -p 3001",
+    "build": "pnpm -r build"
+  },
+  "devDependencies": {
+    "concurrently": "^9.1.2"
+  }
+}
